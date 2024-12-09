@@ -1,0 +1,97 @@
+{% extends 'kazilink/base2.html' %}
+{% load static %}
+{% block title %} Contact {% endblock %}
+
+{% block content %}
+<!-- Contact Section -->
+<section class="py-5">
+    <!-- Section Title -->
+    <div class="container text-center mb-4" data-aos="fade-up">
+        <h2 class="mb-3" style="margin-top: 3%;">Contact</h2>
+        <p class="text-muted">Get in touch with us! We're here to answer your questions and provide the support you need. Connect today.</p>
+    </div>
+    <!-- End Section Title -->
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+            <!-- Address Info -->
+            <div class="col-lg-6">
+                <div class="info-item bg-light p-4 shadow-sm rounded text-center">
+                    <i class="bi bi-geo-alt fs-1 text-primary mb-3"></i>
+                    <h5>Address</h5>
+                    <p class="text-muted">A108 Moi Street, Nairobi, KE 30100</p>
+                </div>
+            </div>
+
+            <!-- Phone Info -->
+            <div class="col-lg-3 col-md-6">
+                <div class="info-item bg-light p-4 shadow-sm rounded text-center">
+                    <i class="bi bi-telephone fs-1 text-primary mb-3"></i>
+                    <h5>Call Us</h5>
+                    <p class="text-muted">+254 721473983</p>
+                </div>
+            </div>
+
+            <!-- Email Info -->
+            <div class="col-lg-3 col-md-6">
+                <div class="info-item bg-light p-4 shadow-sm rounded text-center">
+                    <i class="bi bi-envelope fs-1 text-primary mb-3"></i>
+                    <h5>Email Us</h5>
+                    <p class="text-muted">tonny@gmail.com</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row gy-4 mt-4">
+            <!-- Google Maps -->
+            <div class="col-lg-6">
+                <div class="shadow-sm rounded overflow-hidden">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1994.8667672933886!2d36.82194631575887!3d-1.2920652359943588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d6f21920df%3A0x7a40b7563e17e76!2sNairobi%20City!5e0!3m2!1sen!2ske!4v1696907358539!5m2!1sen!2ske"
+                        frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="col-lg-6">
+                <form method="post" class="p-4 bg-light shadow-sm rounded" data-aos="fade-up" data-aos-delay="400">
+                    {% csrf_token %}
+                    <div class="row gy-4">
+                        <!-- Name Input -->
+                        <div class="col-md-6">
+                            <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                        </div>
+
+                        <!-- Email Input -->
+                        <div class="col-md-6">
+                            <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+                        </div>
+
+                        <!-- Phone Input -->
+                        <div class="col-md-6">
+                            <input type="tel" name="phone" class="form-control" placeholder="Your Phone" required="">
+                        </div>
+
+                        <!-- Subject Input -->
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+                        </div>
+
+                        <!-- Message Input -->
+                        <div class="col-md-12">
+                            <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="col-md-12 text-center">
+                            <button type="submit" class="btn btn-primary px-4 py-2">Send Message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

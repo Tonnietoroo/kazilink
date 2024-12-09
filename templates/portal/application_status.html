@@ -1,0 +1,36 @@
+{% extends "portal/base.html" %}
+
+{% block content %}
+<main id="main" class="main">
+    <h2>Application Status</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Job Name</th>
+            <th>Applied On</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for application in applications %}
+        <tr>
+            <td>{{ application.job.job_name }}</td>
+            <td>{{ application.applied_at }}</td>
+            <td>
+                {% if application.approved %}
+                    <span class="badge bg-success">Approved</span>
+                {% else %}
+                    <span class="badge bg-warning">Pending</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% if not applications %}
+<p>No applications found.</p>
+{% endif %}
+</main>
+{% endblock %}

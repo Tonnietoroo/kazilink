@@ -1,0 +1,46 @@
+{% extends 'administration/base.html' %}
+{% block title %} Admin - Contact Messages {% endblock %}
+
+{% block content %}
+<main id="main" class="main">
+    <div class="container py-5">
+        <h2 class="mb-4">Contact Messages</h2>
+        {% if contacts %}
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Subject</th>
+                    <th>Message</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contact in contacts %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ contact.name }}</td>
+                    <td>{{ contact.email }}</td>
+                    <td>{{ contact.subject }}</td>
+                    <td>{{ contact.message }}</td>
+                    <td>
+                        {% if not contact.replied %}
+                        <a href="{% url 'reply_contact' contact.id %}" class="btn btn-primary btn-sm">Reply</a>
+                        {% else %}
+                        <span class="btn btn-secondary btn-sm">Replied</span>
+                        {% endif %}
+                        
+                        <a href="#" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this message?')">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>No messages available.</p>
+        {% endif %}
+    </div>
+</main>
+{% endblock %}

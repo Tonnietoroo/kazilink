@@ -1,0 +1,28 @@
+{% extends 'administration/base.html' %}
+{% block title %} Job Profile Details {% endblock %}
+
+{% block content %}
+  <main id="main" class="main container mt-5">
+    <h2 class="mb-4">Job Profile Details</h2>
+
+    <div class="card">
+      <div class="card-header">
+        <h5>{{ job_profile.user.username }}'s Job Profile</h5>
+      </div>
+      <div class="card-body">
+        <p><strong>Service Offered:</strong> {{ job_profile.service_offered }}</p>
+        <p><strong>Location:</strong> {{ job_profile.location }}</p>
+        <p><strong>Service Description:</strong> {{ job_profile.service_description }}</p>
+        <p><strong>Institution Name:</strong> {{ job_profile.institution_name }}</p>
+        <p><strong>Certification:</strong> {{ job_profile.certification }}</p>
+
+        {% if job_profile.document %}
+          <p><strong>Document:</strong> <a href="{{ job_profile.document.url }}" target="_blank">View Document</a></p>
+        {% endif %}
+      </div>
+      <div class="card-footer text-right">
+        <a href="{% url 'administration_admin_dashboard' %}" class="btn btn-secondary">Back to Dashboard</a>
+      </div>
+    </div>
+  </main>
+{% endblock %}

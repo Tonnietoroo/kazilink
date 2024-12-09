@@ -1,0 +1,31 @@
+{% extends 'administration/base.html' %}
+{% load static %}
+{% block title %} Pending Request {% endblock %}
+
+{% block content %}
+  <main id="main" class="main">
+    <div class="container mt-4">
+        <h2 class="mb-3">Unapproved Jobs</h2>
+    
+        {% if unapproved_jobs %}
+        <div class="list-group">
+          {% for job in unapproved_jobs %}
+          <div class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+              <strong>{{ job.job_name }}</strong>
+              <span class="text-muted">- Posted by {{ job.user.username }}</span>
+            </div>
+            <a href="{% url 'administration_approve_job' job.job_id %}" class="btn btn-success btn-sm">
+              Approve
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+        {% else %}
+        <div class="alert alert-info" role="alert">
+          No unapproved jobs at the moment.
+        </div>
+        {% endif %}
+      </div>
+  </main>
+{% endblock  %}

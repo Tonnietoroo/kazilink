@@ -1,0 +1,33 @@
+{% extends 'portal/base.html' %}
+
+{% block title %}Applicant Details{% endblock %}
+
+{% block content %}
+<main id="main" class="main">
+    <main class="container mt-5">
+        <h2 class="text-center mb-4 text-primary">Applicant Details for Job: {{ job.job_name }}</h2>
+    
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Applied Job</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ applicant.username }}</td>
+                    <td>{{ applicant.email }}</td>
+                    <td>{{ applicant.profile.contact }}</td>  <!-- Accessing contact from UserProfile -->
+                    <td>{{ job.job_name }}</td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <a href="{% url 'portal_my_posted_jobs' %}" class="btn btn-primary mt-3">Back to My Jobs</a>
+    </main>
+
+</main>
+{% endblock %}

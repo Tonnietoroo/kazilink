@@ -1,0 +1,43 @@
+{% extends 'kazilink/base2.html' %}
+{% load static %}
+{% block title %} About {% endblock %}
+
+{% block content %}
+  
+
+    <!-- About Section -->
+    <div class="container-xxl py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <!-- Images Gallery -->
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="row g-0 rounded overflow-hidden">
+                        <div class="col-6">
+                            <img class="img-fluid w-100" src="{% static 'img\about-1.jpg' %}" alt="Plumber Service">
+                        </div>
+                        <div class="col-6">
+                            <img class="img-fluid" src="{% static 'img\about-2.jpg' %}" style="width: 85%; margin-top: 15%;" alt="Electrician Service">
+                        </div>
+                        <div class="col-6">
+                            <img class="img-fluid" src="{% static 'img\about-3.jpg' %}" style="width: 85%;" alt="Tutoring Services">
+                        </div>
+                        <div class="col-6">
+                            <img class="img-fluid w-100" src="{% static 'img\about-4.jpg' %}" alt="Home Services">
+                        </div>
+                    </div>
+                </div>
+                <!-- About Text -->
+                <div class="col-lg-6 wow fadeIn text-white" data-wow-delay="0.5s">
+                    <h1 class="mb-4">Connecting You to Trusted Local Services</h1>
+                    <p class="mb-4">Kazilink is your go-to platform for discovering reliable and professional local service providers. Whether you need a plumber, electrician, tutor, or any other service, we help you find the best professionals in your neighborhood. Our mission is to make your life easier by connecting you with the talent you need for all your home, work, and personal service needs.</p>
+                    <p><i class="fa fa-check text-light me-3"></i>Easy access to local service providers</p>
+                    <p><i class="fa fa-check text-light me-3"></i>Comprehensive listings for various services</p>
+                    <p><i class="fa fa-check text-light me-3"></i>Verified reviews and ratings from real customers</p>
+                    <a class="btn btn-outline-light py-3 px-5 mt-3" href="#">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+    {% endblock  %}

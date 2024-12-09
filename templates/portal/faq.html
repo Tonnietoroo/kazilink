@@ -1,0 +1,97 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %}Frequently Asked Question{% endblock %}
+
+{% block content %}
+  <main id="main" class="main">
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+        
+        <div class="accordion" id="faqAccordion">
+            <!-- FAQ 1 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faqOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        What is Kazilink?
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="faqOne" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Kazilink is a neighborhood services directory that connects local service providers (such as electricians, tutors, carpenters, and plumbers) with customers in their community. Users can browse service providers, read reviews, and even book services through the platform.
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faqTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        How can I become a service provider on Kazilink?
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="faqTwo" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        To become a service provider on Kazilink, simply create a job profile by providing details about the services you offer, your location, and any relevant certifications or qualifications. Once your profile is created, you can start posting jobs and connecting with potential clients.
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faqThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        How do I book a service provider?
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="faqThree" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        To book a service provider, browse the directory, view the service provider's profile, and select a service you want to book. You can then contact them through the platform to finalize the details, such as scheduling and pricing.
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faqFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Can I leave a review for a service provider?
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="faqFour" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Yes! After using a service, you can leave a review based on your experience. This helps others in your community make informed decisions when selecting a service provider.
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faqFive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        Is Kazilink available in my area?
+                    </button>
+                </h2>
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="faqFive" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        Kazilink is expanding and aims to serve multiple regions. You can check the available service providers in your area by browsing the directory. If you are a service provider, you can sign up regardless of your location.
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ 6 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="faqSix">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        How do I contact Kazilink support?
+                    </button>
+                </h2>
+                <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="faqSix" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body">
+                        You can contact Kazilink support by visiting the Contact page or by sending an email to support@kazilink.com. Our team will respond to your inquiries promptly.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </main>
+{% endblock  %}

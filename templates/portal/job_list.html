@@ -1,0 +1,20 @@
+{% extends 'portal/base.html' %}
+{% block title %}Job List{% endblock %}
+
+{% block content %}
+<main id="main" class="main">
+    <h1>Your Jobs</h1>
+
+    {% if jobs %}
+        <ul>
+        {% for job in jobs %}
+            <li>
+                <a href="{% url 'portal_job_details' job.job_id %}">{{ job.job_name }}</a> - {{ job.amount }} - {{ job.time_created }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No jobs created yet.</p>
+    {% endif %}
+</main>
+{% endblock %}

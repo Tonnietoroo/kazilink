@@ -1,0 +1,52 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %} My Job Applications {% endblock %}
+
+{% block content %}
+<main id="main" class="main">
+    <div class="container mt-5">
+        <h2 class="mb-4">My Job Applications</h2>
+
+        <!-- Display  message -->
+        {% if messages %}
+            <div class="alert alert-dismissible fade show" role="alert">
+                {% for message in messages %}
+                    <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-success{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- Applications List -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Job Name</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Applied At</th>
+                    <!-- <th scope="col">Action</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for application in applications %}
+                    <tr>
+                        <td>{{ application.job.job_name }}</td>
+                        <td>
+                            {% if application.approved %}
+                                <span class="badge bg-success">Approved</span>
+                            {% else %}
+                                <span class="badge bg-warning">Pending</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ application.applied_at }}</td>
+                        <!-- <td>
+                            <a href="{% url 'portal_job_approval_list' %}" class="btn btn-info">View</a>
+                        </td> -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+{% endblock %}

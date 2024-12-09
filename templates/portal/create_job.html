@@ -1,0 +1,47 @@
+{% extends 'portal/base.html' %}
+{% block title %}Create Job{% endblock %}
+
+{% block content %}
+<main id="main" class="main">
+    <form method="POST">
+        {% csrf_token %}
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'error' %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+        {% elif message.tags == 'success' %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+
+        <div class="col-12">
+            <label for="job_name" class="form-label">Job Name</label>
+            <input type="text" name="job_name" class="form-control" id="job_name" required>
+        </div>
+
+        <div class="col-12">
+            <label for="job_description" class="form-label">Job Description</label>
+            <textarea name="job_description" class="form-control" id="job_description" rows="4" required></textarea>
+        </div>
+
+        <div class="col-12">
+            <label for="location" class="form-label">Location</label>
+            <input type="text" name="location" class="form-control" id="location" required>
+        </div>
+
+        <div class="col-12">
+            <label for="amount" class="form-label">Salary</label>
+            <input type="number" name="amount" class="form-control" id="amount" required>
+        </div>
+
+        <div class="col-12">
+            <button class="btn btn-primary w-100" type="submit">Create Job</button>
+        </div>
+    </form>
+</main>
+{% endblock %}

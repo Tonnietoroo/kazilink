@@ -1,0 +1,40 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %} Apply for Job {% endblock %}
+
+{% block content %}
+<main id="main" class="main">
+    <div class="container mt-5">
+        <h2 class="mb-4">Apply for Job: {{ job.job_name }}</h2>
+
+        <!-- Display message -->
+        {% if messages %}
+            <div class="alert alert-dismissible fade show" role="alert">
+                {% for message in messages %}
+                    <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-success{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- Apply for myForm -->
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="jobDescription" class="form-label">Job Description</label>
+                <textarea class="form-control" id="jobDescription" rows="4" disabled>{{ job.job_description }}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="jobLocation" class="form-label">Location</label>
+                <input type="text" class="form-control" id="jobLocation" value="{{ job.location }}" disabled>
+            </div>
+            <div class="mb-3">
+                <label for="jobAmount" class="form-label">Salary</label>
+                <input type="text" class="form-control" id="jobAmount" value="{{ job.amount }}" disabled>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Confirm Application</button>
+        </form>
+    </div>
+</main>
+{% endblock %}

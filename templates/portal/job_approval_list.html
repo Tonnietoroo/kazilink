@@ -1,0 +1,46 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %}Job Approval List{% endblock %}
+
+{% block content %}
+  <main id="main" class="main">
+    <div class="container mt-5">
+      <h2>Job Approval List</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Job Name</th>
+            <th scope="col">Applicant</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Paid Status</th>
+            <th scope="col">Approval Date</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for approval in job_approvals %}
+            <tr>
+              <td>{{ approval.application.job.job_name }}</td>
+              <td>{{ approval.application.user.username }}</td>
+              <td>{{ approval.amount }}</td>
+              <td>{% if approval.paid_status %} Paid {% else %} Not Paid {% endif %}</td>
+              <td>{{ approval.time_approved|date:"Y-m-d H:i" }}</td>
+              <td>
+                <a href="{% url 'portal_update_job_approval' approval.id %}" class="btn btn-warning btn-sm">Edit</a>
+              </td>
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="6" class="text-center">No job approvals found.</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      
+      {% for job_application in job_applications %}
+        <a href="{% url 'portal_create_job_approval' job_application.id %}" class="btn btn-primary">Create Approval for {{ job_application.job.job_name }}</a>
+      {% endfor %}
+    </div>
+  </main>
+{% endblock %}

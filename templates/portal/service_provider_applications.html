@@ -1,0 +1,46 @@
+{% extends 'portal/base.html' %}
+{% block title %}Applications for My Jobs{% endblock %}
+
+{% block content %}
+<main id="main" class="main container mt-5">
+    <h2 class="text-center mb-4 text-primary" style="margin-top: 6%;">Job Applications for My Posted Jobs</h2>
+
+    {% if applications %}
+        <div class="row gy-4">
+            {% for application in applications %}
+                <div class="col-lg-6">
+                    <div class="card shadow-sm h-100 border-0">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">Job: {{ application.job.job_name }}</h5>
+                            <p><strong>Applicant:</strong> {{ application.user.username }}</p>
+                            <p><strong>Applied At:</strong> {{ application.applied_at|date:"M d, Y H:i" }}</p>
+                            <p><strong>Status:</strong> 
+                                {% if application.approved %}
+                                    <span class="badge bg-success">Approved</span>
+                                {% else %}
+                                    <span class="badge bg-warning">Pending</span>
+                                {% endif %}
+                            </p>
+                            <p>
+                                <strong>Document:</strong>
+                                {% if application.user.job_profile.document %}
+                                    <a href="{{ application.user.job_profile.document.url }}" target="_blank">View Document</a>
+                                {% else %}
+                                    No document uploaded
+                                {% endif %}
+                            </p>
+                            <form method="post" action="{% url 'portal_application_approval' application.id %}">
+                                {% csrf_token %}
+                                <button type="submit" name="approve" class="btn btn-success btn-sm">Approve</button>
+                                <button type="submit" name="reject" class="btn btn-danger btn-sm">Reject</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center text-muted mt-4">No applications found for your jobs.</p>
+    {% endif %}
+</main>
+{% endblock %}

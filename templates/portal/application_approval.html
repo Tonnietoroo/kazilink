@@ -1,0 +1,45 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %} Application Approval {% endblock %}
+
+{% block content %}
+<main id="main" class="main">
+    <h2>Application Approval</h2>
+    <p>Application for: <strong>{{ application.job.job_name }}</strong></p>
+    <p>Applicant: <strong>{{ application.user.username }}</strong></p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="approve" class="btn btn-success">Approve</button>
+        <button type="submit" name="reject" class="btn btn-danger">Reject</button>
+    </form>
+
+    <h2>Pending Applications</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Job</th>
+            <th>Applicant</th>
+            <th>Date Applied</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for application in applications %}
+        <tr>
+            <td>{{ application.job.job_name }}</td>
+            <td>{{ application.user.username }}</td>
+            <td>{{ application.applied_at|date:"Y-m-d H:i" }}</td>
+            <td>
+                <a href="{% url 'portal_application_approval' application.id %}" class="btn btn-primary">Review</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No pending applications found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</main>
+{% endblock %}

@@ -1,0 +1,285 @@
+{% extends 'kazilink/base2.html' %}
+{% load static %}
+{% block title %} Services {% endblock %}
+
+{% block content %}
+  
+    <!-- Job Listings Section -->
+    <div class="container py-5">
+      <div class="row text-center mb-5">
+          <div class="col-12">
+              <h2 class="display-4 mb-4 wow fadeInUp text-primary" data-wow-delay="0.2s">Explore Local Job Opportunities</h2>
+              <p class="lead wow fadeInUp" data-wow-delay="0.4s">Find jobs in various service sectors and get started today!</p>
+          </div>
+      </div>
+    
+      <!-- Job Categories Tabs -->
+      <div class="row">
+          <div class="col-12 text-center">
+              <ul class="nav nav-pills justify-content-center mb-5" id="jobTabs" role="tablist">
+                  <li class="nav-item">
+                      <a class="nav-link active" id="plumber-tab" data-bs-toggle="pill" href="#plumber" role="tab" aria-controls="plumber" aria-selected="true">Plumbing Jobs</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" id="electrician-tab" data-bs-toggle="pill" href="#electrician" role="tab" aria-controls="electrician" aria-selected="false">Electrician Jobs</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" id="tutor-tab" data-bs-toggle="pill" href="#tutor" role="tab" aria-controls="tutor" aria-selected="false">Tutoring Jobs</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" id="gardener-tab" data-bs-toggle="pill" href="#gardener" role="tab" aria-controls="gardener" aria-selected="false">Gardening Jobs</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+    
+      <!-- Job Listings Content -->
+      <div class="tab-content" id="jobTabContent">
+          <!-- Plumbing Jobs Tab -->
+          <div class="tab-pane fade show active" id="plumber" role="tabpanel" aria-labelledby="plumber-tab">
+              <div class="row">
+                  <!-- Job Card Start -->
+                  <div class="col-md-4 mb-4">
+                      <div class="card h-100 shadow-sm">
+                          <img src="{% static 'img/plumber-1.jpg' %}" class="card-img-top img-fluid" alt="Experienced Plumber Needed" style="height: 200px; object-fit: cover;">
+                          <div class="card-body">
+                              <h5 class="card-title text-primary">Experienced Plumber Needed</h5>
+                              <p class="card-text">We are looking for a skilled plumber with 3+ years of experience. Immediate start available.</p>
+                              <p class="text-muted">Location: Eldoret, Kenya</p>
+                              <a href="{% url 'login' %}" class="btn btn-primary">Apply Now</a>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Job Card End -->
+      
+                  <!-- Additional Plumbing Jobs -->
+                  <div class="col-md-4 mb-4">
+                      <div class="card h-100 shadow-sm">
+                          <img src="{% static 'img/plumber-2.jpg' %}" class="card-img-top img-fluid" alt="Junior Plumber Position" style="height: 200px; object-fit: cover;">
+                          <div class="card-body">
+                              <h5 class="card-title text-primary">Junior Plumber Position</h5>
+                              <p class="card-text">Looking for a junior plumber with basic plumbing skills. On-the-job training provided.</p>
+                              <p class="text-muted">Location: Nakuru, Kenya</p>
+                              <a href="{% url 'login' %}" class="btn btn-primary">Apply Now</a>
+                          </div>              
+                      </div>
+                  </div>
+      
+                   <!-- Additional Plumbing Jobs -->
+                   <div class="col-md-4 mb-4">
+                      <div class="card h-100 shadow-sm">
+                          <img src="{% static 'img/plumber-3.jpg' %}" class="card-img-top img-fluid" alt="Junior Plumber Position" style="height: 200px; object-fit: cover;">
+                          <div class="card-body">
+                              <h5 class="card-title text-primary">Junior Plumber Position</h5>
+                              <p class="card-text">Looking for a junior plumber with basic plumbing skills. On-the-job training provided.</p>
+                              <p class="text-muted">Location: Nakuru, Kenya</p>
+                              <a href="{% url 'login' %}" class="btn btn-primary">Apply Now</a>
+                          </div>              
+                      </div>
+                  </div>
+              </div>
+          </div>
+      
+          <!-- Electrician Jobs Tab -->
+          <div class="tab-pane fade" id="electrician" role="tabpanel" aria-labelledby="electrician-tab">
+              <div class="row">
+                  <!-- Job Card Start -->
+                  <div class="col-md-4 mb-4">
+                      <div class="card h-100 shadow-sm">
+                          <img src="{% static 'img/electrician-1.jpg' %}" class="card-img-top img-fluid" alt="Licensed Electrician Needed" style="height: 200px; object-fit: cover;">
+                          <div class="card-body">
+                              <h5 class="card-title text-primary">Licensed Electrician Needed</h5>
+                              <p class="card-text">Looking for a licensed electrician to work on residential and commercial electrical systems.</p>
+                              <p class="text-muted">Location: Nairobi, Kenya</p>
+                              <a href="{% url 'login' %}" class="btn btn-primary">Apply Now</a>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Job Card End -->
+      
+                  <!-- Additional Electrician Jobs -->
+                  <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="{% static 'img/electrician-3.jpg' %}" class="card-img-top img-fluid" alt="Electrician Apprentice" style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">Electrician Apprentice</h5>
+                            <p class="card-text">Join our team as an apprentice to gain hands-on experience in the electrical trade.</p>
+                            <p class="text-muted">Location: Kisumu, Kenya</p>
+                            <a href="{% url 'login' %}" class="btn btn-primary">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+      
+                   <!-- Additional Electrician Jobs -->
+                   <div class="col-md-4 mb-4">
+                      <div class="card h-100 shadow-sm">
+                          <img src="{% static 'img/electrician-3.jpg' %}" class="card-img-top img-fluid" alt="Electrician Apprentice" style="height: 200px; object-fit: cover;">
+                          <div class="card-body">
+                              <h5 class="card-title text-primary">Electrician Apprentice</h5>
+                              <p class="card-text">Join our team as an apprentice to gain hands-on experience in the electrical trade.</p>
+                              <p class="text-muted">Location: Kisumu, Kenya</p>
+                              <a href="{% url 'login' %}" class="btn btn-primary">Apply Now</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      
+          <!-- Tutoring Jobs Tab -->
+          <div class="tab-pane fade" id="tutor" role="tabpanel" aria-labelledby="tutor-tab">
+              <div class="row">
+                  <!-- Job Card Start -->
+                  <div class="col-md-4 mb-4">
+                      <div class="card h-100 shadow-sm">
+                          <img src="{% static 'img/tutor-1.jpg' %}" class="card-img-top img-fluid" alt="Math Tutor for High School Students" style="height: 200px; object-fit: cover;">
+                          <div class="card-body">
+                              <h5 class="card-title text-primary">Math Tutor for High School Students</h5>
+                              <p class="card-text">We are looking for a dedicated tutor to help high school students excel in mathematics.</p>
+                              <p class="text-muted">Location: Eldoret, Kenya</p>
+                              <a href="{% url 'login' %}" class="btn btn-primary">Apply Now</a>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Job Card End -->
+      
+                  <!-- Additional Tutor Jobs -->
+                  <div class="col-md-4 mb-4">
+                      <div class="card h-100 shadow-sm">
+                          <img src="{% static 'img/tutor-2.jpg' %}" class="card-img-top img-fluid" alt="English Tutor for Primary School" style="height: 200px; object-fit: cover;">
+                          <div class="card-body">
+                              <h5 class="card-title text-primary">English Tutor for Primary School</h5>
+                              <p class="card-text">Seeking an enthusiastic English tutor to work with primary school students.</p>
+                              <p class="text-muted">Location: Nairobi, Kenya</p>
+                              <a href="{% url 'login' %}" class="btn btn-primary">Apply Now</a>
+                          </div>
+                      </div>
+                  </div>
+      
+                  <!-- Additional Tutor Jobs -->
+                  <div class="col-md-4 mb-4">
+                      <div class="card h-100 shadow-sm">
+                          <img src="{% static 'img/tutor-3.jpg' %}" class="card-img-top img-fluid" alt="English Tutor for Primary School" style="height: 200px; object-fit: cover;">
+                          <div class="card-body">
+                              <h5 class="card-title text-primary">English Tutor for Primary School</h5>
+                              <p class="card-text">Seeking an enthusiastic English tutor to work with primary school students.</p>
+                              <p class="text-muted">Location: Nairobi, Kenya</p>
+                              <a href="{% url 'login' %}" class="btn btn-primary">Apply Now</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      
+          <!-- Gardening Jobs Tab -->
+          <div class="tab-pane fade" id="gardener" role="tabpanel" aria-labelledby="gardener-tab">
+              <div class="row">
+                  <!-- Job Card Start -->
+                  <div class="col-md-4 mb-4">
+                      <div class="card h-100 shadow-sm">
+                          <img src="{% static 'img/garden-1.jpg' %}" class="card-img-top img-fluid" alt="Experienced Gardener" style="height: 200px; object-fit: cover;">
+                          <div class="card-body">
+                              <h5 class="card-title text-primary">Experienced Gardener</h5>
+                              <p class="card-text">We are hiring an experienced gardener to take care of residential and commercial properties.</p>
+                              <p class="text-muted">Location: Eldoret, Kenya</p>
+                              <a href="{% url 'login' %}" class="btn btn-primary">Apply Now</a>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Job Card End -->
+      
+                  <!-- Additional Gardening Jobs -->
+                  <div class="col-md-4 mb-4">
+                      <div class="card h-100 shadow-sm">
+                          <img src="{% static 'img/garden-2.jpg' %}" class="card-img-top img-fluid" alt="Junior Gardener" style="height: 200px; object-fit: cover;">
+                          <div class="card-body">
+                              <h5 class="card-title text-primary">Junior Gardener</h5>
+                              <p class="card-text">Looking for a junior gardener for part-time work with flexible hours.</p>
+                              <p class="text-muted">Location: Nakuru, Kenya</p>
+                              <a href="{% url 'login' %}" class="btn btn-primary">Apply Now</a>
+                          </div>
+                      </div>
+                  </div>
+      
+                   <!-- Additional Gardening Jobs -->
+                   <div class="col-md-4 mb-4">
+                      <div class="card h-100 shadow-sm">
+                          <img src="{% static 'img/garden-3.jpg' %}" class="card-img-top img-fluid" alt="Junior Gardener" style="height: 200px; object-fit: cover;">
+                          <div class="card-body">
+                              <h5 class="card-title text-primary">Junior Gardener</h5>
+                              <p class="card-text">Looking for a junior gardener for part-time work with flexible hours.</p>
+                              <p class="text-muted">Location: Nakuru, Kenya</p>
+                              <a href="{% url 'login' %}" class="btn btn-primary">Apply Now</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    
+      <!-- Call to Action -->
+      <div class="row text-center mt-5">
+          <div class="col-12">
+              <a href="{% url 'login' %}" class="btn btn-outline-primary btn-lg">View All Jobs Posted</a>
+          </div>
+      </div>
+  </div>
+  <!-- Job Listings End -->
+    
+  <!-- Testimonial Section -->
+  <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+      <div class="container">
+          <h1 class="text-center mb-5 text-primary">What Our Clients Say About Kazilink!</h1>
+          <div class="owl-carousel testimonial-carousel">
+              <!-- Testimonial 1 -->
+              <div class="testimonial-item bg-light rounded p-4">
+                  <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                  <p>"Kazilink helped me find a reliable plumber for my home repairs. The service was quick, professional, and affordable!"</p>
+                  <div class="d-flex align-items-center">
+                      <img class="img-fluid flex-shrink-0 rounded" src="{% static 'img/testimonial-1.jpg' %}" style="width: 50px; height: 50px;" alt="John Doe">
+                      <div class="ps-3">
+                          <h5 class="mb-1">Tonny Toroitich</h5>
+                          <small>Homeowner</small>
+                      </div>
+                  </div>
+              </div>
+              <!-- Testimonial 2 -->
+              <div class="testimonial-item bg-light rounded p-4">
+                  <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                  <p>"I needed an electrician for some electrical upgrades. Kazilink connected me with an expert who completed the job on time."</p>
+                  <div class="d-flex align-items-center">
+                      <img class="img-fluid flex-shrink-0 rounded" src="{% static 'img/testimonial-2.jpg' %}" style="width: 50px; height: 50px;" alt="Mary Wambui">
+                      <div class="ps-3">
+                          <h5 class="mb-1">Mary Wambui</h5>
+                          <small>Business Owner</small>
+                      </div>
+                  </div>
+              </div>
+              <!-- Testimonial 3 -->
+              <div class="testimonial-item bg-light rounded p-4">
+                  <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                  <p>"As a parent, I’m grateful for Kazilink’s tutoring services. My child’s grades improved after just a few sessions!"</p>
+                  <div class="d-flex align-items-center">
+                      <img class="img-fluid flex-shrink-0 rounded" src="{% static 'img/testimonial-3.jpg' %}" style="width: 50px; height: 50px;" alt="James Mwangi">
+                      <div class="ps-3">
+                          <h5 class="mb-1">James Mwangi</h5>
+                          <small>Parent</small>
+                      </div>
+                  </div>
+              </div>
+              <!-- Testimonial 4 -->
+              <div class="testimonial-item bg-light rounded p-4">
+                  <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                  <p>"I used Kazilink to find a local gardener for my yard. The service was professional and my garden looks amazing now!"</p>
+                  <div class="d-flex align-items-center">
+                      <img class="img-fluid flex-shrink-0 rounded" src="{% static 'img/testimonial-4.jpg' %}" style="width: 50px; height: 50px;" alt="Nina Kariuki">
+                      <div class="ps-3">
+                          <h5 class="mb-1">Nina Kariuki</h5>
+                          <small>Homeowner</small>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Testimonial End -->
+{% endblock  %}

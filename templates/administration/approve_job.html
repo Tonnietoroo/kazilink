@@ -1,0 +1,31 @@
+{% extends 'administration/base.html' %}
+{% load static %}
+{% block title %} approved jobs {% endblock %}
+
+{% block content %}
+<main id="main" class="main container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Approve or Reject Job</h2>
+        </div>
+        <div class="card-body">
+            <p><strong>Job Name:</strong> {{ job.job_name }}</p>
+            <p><strong>Description:</strong> {{ job.job_description }}</p>
+            <p><strong>Location:</strong> {{ job.location }}</p>
+            <p><strong>Amount:</strong> {{ job.amount }}</p>
+
+            <form method="post" class="mt-3">
+                {% csrf_token %}
+                <div class="d-flex gap-3">
+                    <button type="submit" name="approve" class="btn btn-success">
+                        Approve
+                    </button>
+                    <button type="submit" name="reject" class="btn btn-danger">
+                        Reject
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

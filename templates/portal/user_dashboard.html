@@ -1,0 +1,40 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %} Dashboard {% endblock %}
+
+{% block content %}
+<main id="main" class="main">
+  {% if messages %}
+  <div class="alert alert-succes">
+    <ul class="mb-0">
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  <h2>Welcome <span style="color: dodgerblue;">{{ user.first_name }}</span> </h2>
+
+  <div class="container mt-4">
+    <h1>Available Jobs</h1>
+    <div class="row">
+      {% for job in jobs %}
+      <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">{{ job.job_name }}</h5>
+            <p class="card-text"><strong>Location:</strong> {{ job.location }}</p>
+            <p class="card-text"><strong>Salary:</strong> {{ job.amount }}</p>
+            <a href="{% url 'portal_job_details' job.job_id %}" class="btn btn-primary">View Details</a>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <p>No jobs available at the moment.</p>
+      {% endfor %}
+    </div>
+  </div>
+
+
+</main>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %} Create Job Profile {% endblock %}
+
+{% block content %}
+<main id="main" class="main">
+        <h2>Create Job Profile</h2>
+    <form method="post" enctype="multipart/form-data" class="row g-3 needs-validation">
+        {% csrf_token %}
+
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'error' %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+        {% elif message.tags == 'success' %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+
+
+        <div class="col-12">
+            <label for="serviceOffered" class="form-label">Service Offered</label>
+            <input type="text" name="service_offered" class="form-control" id="serviceOffered" required>
+            <div class="invalid-feedback">Please provide the service you offer.</div>
+        </div>
+
+        <div class="col-12">
+            <label for="location" class="form-label">Location</label>
+            <input type="text" name="location" class="form-control" id="location" required>
+            <div class="invalid-feedback">Please provide your location.</div>
+        </div>
+
+        <div class="col-12">
+            <label for="serviceDescription" class="form-label">Service Description</label>
+            <textarea name="service_description" class="form-control" id="serviceDescription" rows="4"
+                required></textarea>
+            <div class="invalid-feedback">Please provide a description of your service.</div>
+        </div>
+
+        <div class="col-12">
+            <label for="institutionName" class="form-label">Institution Name</label>
+            <input type="text" name="institution_name" class="form-control" id="institutionName">
+        </div>
+
+        <div class="col-12">
+            <label for="certification" class="form-label">Certification</label>
+            <input type="text" name="certification" class="form-control" id="certification">
+        </div>
+
+        <div class="col-12">
+            <label for="document" class="form-label">Upload Document (PDF)</label>
+            <input type="file" name="document" class="form-control" id="document">
+        </div>
+
+        <div class="col-12">
+            <button class="btn btn-primary w-100" type="submit">Create Job Profile</button>
+        </div>
+    </form>
+
+
+</main>
+{% endblock %}

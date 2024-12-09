@@ -1,0 +1,39 @@
+{% extends 'portal/base.html' %}
+{% block content %}
+
+<main id="main" class="main">
+    <h2>Update Job Profile</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="service_offered">Service Offered</label>
+            <input type="text" id="service_offered" name="service_offered" class="form-control" value="{{ job_profile.service_offered }}">
+        </div>
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location" class="form-control" value="{{ job_profile.location }}">
+        </div>
+        <div class="form-group">
+            <label for="service_description">Service Description</label>
+            <textarea id="service_description" name="service_description" class="form-control">{{ job_profile.service_description }}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="institution_name">Institution Name</label>
+            <input type="text" id="institution_name" name="institution_name" class="form-control" value="{{ job_profile.institution_name }}">
+        </div>
+        <div class="form-group">
+            <label for="certification">Certification</label>
+            <input type="text" id="certification" name="certification" class="form-control" value="{{ job_profile.certification }}">
+        </div>
+        <div class="form-group">
+            <label for="document">Upload Document</label>
+            <input type="file" id="document" name="document" class="form-control">
+        </div>
+        {% if job_profile.document %}
+            <p>Current Document: <a href="{{ job_profile.document.url }}" target="_blank">View Document</a></p>
+        {% endif %}
+        <button type="submit" class="btn btn-primary">Update Profile</button>
+    </form>
+</main>
+{% endblock %}

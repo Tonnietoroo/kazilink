@@ -1,0 +1,55 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+{% block title %}Pending Job Applications{% endblock %}
+
+{% block content %}
+  <main id="main" class="main">
+    {% if messages %}
+    <div class="alert alert-dismissible fade show" role="alert">
+        {% for message in messages %}
+            <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-success{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+   {% endif %}
+    <h2>Pending Job Applications</h2>
+    <table class="table table-bordered table-hover table-striped mt-4">
+      <thead class="table-dark">
+        <tr>
+          <th>Job Name</th>
+          <th>Job Description</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for application in pending_applications %}
+          <tr>
+            <td>{{ application.job.job_name }}</td>
+            <td>{{ application.job.job_description }}</td>
+            <td>
+              {% if application.approved %}
+                <span class="badge bg-success">Approved</span>
+              {% else %}
+                <span class="badge bg-warning text-dark">Pending</span>
+              {% endif %}
+            </td>
+            <td>
+              {% if not application.approved %}
+                <form method="post" class="d-flex gap-2">
+                  {% csrf_token %}
+                  <input type="hidden" name="application_id" value="{{ application.id }}">
+                  <button type="submit" name="approve" class="btn btn-success btn-sm">Approve</button>
+                  <button type="submit" name="reject" class="btn btn-danger btn-sm">Reject</button>
+                </form>
+              {% else %}
+                <span class="text-muted">Already Approved</span>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </main>
+{% endblock %}
