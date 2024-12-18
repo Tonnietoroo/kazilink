@@ -17,4 +17,5 @@ urlpatterns = [
     path('admin/contacts/', views.view_contacts, name='administration_admin_contacts'),
     path('pending_request/', views.pending_request, name='administration_pending_request'),
     path('reply_contact/<int:id>/', views.reply_contact, name='reply_contact'),
+    path('delete_contact/<int:id>/', views.delete_contact, name='delete_contact'),
     ]

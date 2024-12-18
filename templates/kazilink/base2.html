@@ -45,7 +45,13 @@
         <!-- Navbar Start -->
         <header class="bg-primary text-white p-3" style="background-color: blue;">
             <nav class="navbar navbar-expand-lg navbar-light" >
-                <a class="navbar-brand" href="#">Kazilink</a>
+                <div class="d-flex align-items-center">
+                    <a class="navbar-brand d-flex align-items-center" href="#">
+                        <img src="{% static 'img/logo.png' %}" alt="KaziLink Logo" class="img-fluid rounded-circle me-2" style="max-height: 40px;">
+                        <span class="fw-bold  fs-4" style="color: blue;">KaziLink</span>
+                    </a>
+                </div>
+                
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

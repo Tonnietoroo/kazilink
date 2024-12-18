@@ -167,8 +167,7 @@ def approve_job(request, job_id):
     return render(request, 'administration/approve_job.html', context)
 
 def view_contacts(request):
-    """View for admin to see all contact messages"""
-    contacts = Contact.objects.all()
+    contacts = Contact.objects.all().order_by('-id')  # Order by latest
     context = {'contacts': contacts}
     return render(request, 'administration/admin_contacts.html', context)
 
@@ -178,24 +177,42 @@ def pending_request(request):
 
 
 def reply_contact(request, id):
+    """
+    Allows the admin to reply to a contact message via email.
+    """
     contact = get_object_or_404(Contact, id=id)
 
     if request.method == 'POST':
         reply_subject = "Re: " + contact.subject
         reply_message = request.POST.get('reply_message')
-        
-        
-        send_mail(
-            reply_subject,
-            reply_message,
-            'tonnytoroitich06@gmail.com', 
-            [contact.email],
-            fail_silently=False,
-        )
-        contact.replied = True
-        contact.save()
 
-        messages.success(request, "Reply sent successfully!")
-        return redirect('admin_contact_messages')  
+        try:
+            send_mail(
+                reply_subject,
+                reply_message,
+                'toroitichtonny06@gmail.com',  # Replace with your sender email
+                [contact.email],
+                fail_silently=False,
+            )
+            contact.replied = True  # Add this field in your Contact model
+            contact.save()
+
+            messages.success(request, "Reply sent successfully!")
+            return redirect('administration_admin_dashboard')
+        except Exception as e:
+            messages.error(request, f"Failed to send reply: {str(e)}")
 
     return render(request, 'administration/reply_contact.html', {'contact': contact})
+
+def delete_contact(request, id):
+    # Get the contact by id or return a 404 if it doesn't exist
+    contact = get_object_or_404(Contact, id=id)
+
+    # Delete the contact
+    contact.delete()
+
+    # Set a success message
+    messages.success(request, "Contact message deleted successfully.")
+
+    # Redirect to the contact messages page after deletion
+    return redirect('administration_admin_dashboard')  # Assuming 'admin_contact_messages' is the URL name for the contact messages page

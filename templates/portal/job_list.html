@@ -2,19 +2,23 @@
 {% block title %}Job List{% endblock %}
 
 {% block content %}
-<main id="main" class="main">
-    <h1>Your Jobs</h1>
+<main id="main" class="main container py-4">
+    <h1 class="text-center mb-4">Jobs Posted</h1>
 
     {% if jobs %}
-        <ul>
+        <div class="list-group">
         {% for job in jobs %}
-            <li>
-                <a href="{% url 'portal_job_details' job.job_id %}">{{ job.job_name }}</a> - {{ job.amount }} - {{ job.time_created }}
-            </li>
+            <a href="{% url 'portal_job_details' job.job_id %}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="mb-1">{{ job.job_name }}</h5>
+                    <small class="text-muted">Created: {{ job.time_created }}</small>
+                </div>
+                <span class="badge bg-primary rounded-pill">{{ job.amount }}</span>
+            </a>
         {% endfor %}
-        </ul>
+        </div>
     {% else %}
-        <p>No jobs created yet.</p>
+        <p class="text-center text-muted">No jobs created yet.</p>
     {% endif %}
 </main>
 {% endblock %}

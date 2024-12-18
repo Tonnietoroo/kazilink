@@ -12,7 +12,7 @@
                     <div class="card shadow-sm h-100 border-0">
                         <div class="card-body">
                             <h5 class="card-title text-primary">Job: {{ application.job.job_name }}</h5>
-                            <p><strong>Applicant:</strong> {{ application.user.username }}</p>
+                            <p><strong>Applicant:</strong> {{ application.user.first_name }} {{ application.user.last_name }}</p>
                             <p><strong>Applied At:</strong> {{ application.applied_at|date:"M d, Y H:i" }}</p>
                             <p><strong>Status:</strong> 
                                 {% if application.approved %}

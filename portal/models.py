@@ -50,9 +50,10 @@ class JobApplication(models.Model):
     """Model for Job Application."""
 
     # Fields
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='job_applications') 
-    job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name='applications')  
-    approved = models.BooleanField(default=False) 
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name='applications')
+    approved = models.BooleanField(null=True)  # True for Approved, False for Rejected, None for Pending
+    status = models.CharField(max_length=20, default="Pending")  # New field for explicit status
     applied_at = models.DateTimeField(auto_now_add=True)  
 
     def __str__(self):

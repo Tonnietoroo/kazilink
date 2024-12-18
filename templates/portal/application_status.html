@@ -4,33 +4,37 @@
 <main id="main" class="main">
     <h2>Application Status</h2>
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Job Name</th>
-            <th>Applied On</th>
-            <th>Status</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for application in applications %}
-        <tr>
-            <td>{{ application.job.job_name }}</td>
-            <td>{{ application.applied_at }}</td>
-            <td>
-                {% if application.approved %}
-                    <span class="badge bg-success">Approved</span>
-                {% else %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Job Name</th>
+                <th>Applied On</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for application in applications %}
+            <tr>
+                <td>{{ application.job.job_name }}</td>
+                <td>{{ application.applied_at }}</td>
+                <td>
+                    {% if application.approved %}
+                    <span class="badge bg-success">Congrantulation {{ user.first_name }} {{ user.last_name }}, Your Job
+                        as been Approved wait for an Email</span>
+                    {% elif application.status == "Rejected" %}
+                    <span class="badge bg-danger">Sorry {{ user.first_name }}, Your Application has been
+                        Rejected.</span>
+                    {% else %}
                     <span class="badge bg-warning">Pending</span>
-                {% endif %}
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
-{% if not applications %}
-<p>No applications found.</p>
-{% endif %}
+    {% if not applications %}
+    <p>No applications found.</p>
+    {% endif %}
 </main>
 {% endblock %}

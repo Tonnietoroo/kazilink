@@ -112,7 +112,7 @@ def create_job(request):
             # Error message for job creation failure
             messages.error(request, f"An error occurred while creating the job: {str(e)}")
 
-        return redirect('portal_user_dashboard')
+        return redirect('portal_my_posted_jobs')
 
     # Render the job creation page for GET requests
     return render(request, 'portal/create_job.html')
@@ -165,7 +165,7 @@ def apply_for_job(request, job_id):
         job_application.save()  
 
         messages.success(request, "Application submitted successfully!")
-        return redirect('portal_job_applications')  
+        return redirect('portal_application_status')  
 
     context = {
         'job': job
@@ -197,22 +197,20 @@ def application_approval(request, application_id):
     if request.method == 'POST':
         if 'approve' in request.POST:
             application.approved = True
+            application.status = "Approved"  # Add a status field to track rejection explicitly if needed
             application.save()
-
             messages.success(
                 request,
                 f"Application for '{application.job.job_name}' approved! The applicant has been notified."
             )
-
-            # Redirect to applicant details page
             return redirect('portal_applicant_details', application_id=application.id)
-        
+
         elif 'reject' in request.POST:
             application.approved = False
+            application.status = "Rejected"  # Explicit status for rejection
             application.save()
             messages.warning(request, f"Application for '{application.job.job_name}' rejected! The applicant has been notified.")
-        
-        return redirect('portal_user_dashboard')
+            return redirect('portal_user_dashboard')
 
     context = {
         'application': application,
@@ -306,6 +304,7 @@ def my_posted_jobs(request):
         'jobs': jobs,
     }
     return render(request, 'portal/my_posted_jobs.html', context)
+
 
 
 ################### PENDING JOBS#############################
